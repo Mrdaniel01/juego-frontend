@@ -14,21 +14,30 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
 }
-.tittle {
-  font-size: 4rem;
-  position: absolute;
-  text-shadow: var(--shadow);
-  left: 8rem;
-  top: 1rem;
-}
 body {
   background: var(--clear-main);
   color: white;
 }
+.game {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+.tittle {
+  font-size: 4rem;
+  position: absolute;
+  text-shadow: var(--shadow);
+  left: 25%;
+  top: 5%;
+}
 .game__container {
   height: 90vh;
+  max-height: 650px;
+  margin-top: 4rem;
   width: 900px;
-  margin: 2rem auto;
   border-radius: 1rem;
   background: var(--back-grad);
   color: var(--dark-main);
@@ -41,6 +50,7 @@ body {
 .card {
   width: 40%;
   height: 80%;
+  max-height: 600px;
   background: var(--third-color);
   margin: 2rem;
   padding: 1rem;
@@ -92,7 +102,7 @@ body {
 .author {
   color: var(--dark-main);
   position: absolute;
-  bottom: 1rem;
+  bottom: -4rem;
   right: 1rem;
   padding: 1rem 2rem;
   display: flex;
@@ -164,7 +174,19 @@ body {
 .hide {
   display: none;
 }
+.btn {
+  padding: 20px;
+  border: none;
+  background-color: var(--dark-main);
+  color: white;
+  box-shadow: 0px 0px 5px 2px rgb(128, 128, 128);
+  position: absolute;
+  top: 10px;
+  right: 10px;  
+  margin: 20px;
+}
 #remainLife1, #remainLife2, #childSpan2 {
   color: rgb(4, 100, 52);
   font-size: 3rem;
 }
+

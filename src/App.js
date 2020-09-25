@@ -1,33 +1,29 @@
 import React, { useState } from 'react';
 import Warrior1 from './components/Warrior1';
 import Warrior2 from './components/Warrior2';
-import gitLogo from './assets/git.png'
+import gitLogo from './assets/git.png';
+//import { ModalWinner } from './components/ModalWinner';
 
 const App = () => {
+  
+  const [ life, setLife] = useState({
+    life1: 100,
+    life2: 100
+  }) 
 
-  const modalWinner = document.getElementById('modalWinner')
-  const gameContainer = document.getElementById('gameContainer')
-
-  const handleModal = () => {
-    modalWinner.classList.add('hide');
-    gameContainer.classList.remove('hide');
+  const { life1, life2} = life;
+  
+  const reset = () => {
+    setLife ({
+      life1: 100,
+      life2: 100
+     })
   }
-
-  const [life1, setLife1 ] = useState(100)
-
-  const handlePlay1 = () => {
-    setLife1( life1 - Math.floor(Math.random() * (40 - 20 ) + 20))
-  }
-  const [life2, setLife2 ] = useState(100)
-
-  const handlePlay2 = () => {
-    setLife2( life2 - Math.floor(Math.random() * (40 - 20 ) + 20))
-  }
-
 
   return (
-    <>
+    <div className='game'>
       <h1 className="tittle">The Game</h1>
+      <button onClick={reset} className='btn'>Reset</button>
       <div className="game__container" id='gameContainer'>
         <div className="card">
           <ul className="card__items">
@@ -37,7 +33,14 @@ const App = () => {
                   <span id="remainLife1Num"></span>            
               </div>
               <div>
-                <button type="button" id='playBtn1' onClick={handlePlay1}>
+                <button type="button" id='playBtn1' 
+                
+                onClick={() => 
+                  setLife({
+                    ...life,
+                    life1: life1 - Math.floor(Math.random() * (40 - 20 ) + 20)}
+                  )}>
+                  
                   Play
                 </button>
               </div>
@@ -55,7 +58,15 @@ const App = () => {
             <li className="card__items--logic">
               <div id='remainLife2'>{life1}</div>
               <div>
-                <button type='button' id='playBtn2' onClick={handlePlay2}>
+                <button type='button' id='playBtn2' 
+                
+                  onClick={() => 
+                    setLife({
+                      ...life,
+                      life2: life2 - Math.floor(Math.random() * (40 - 20 ) + 20)}
+                    )}>
+                  
+                  
                   Play
                 </button>
               </div>
@@ -66,6 +77,7 @@ const App = () => {
             </li>
           </ul>
         </div>
+        
       </div>   
 
       <div className="author">
@@ -74,31 +86,7 @@ const App = () => {
           <img src={gitLogo} alt="git hub Daniel Link" />
         </a>
       </div>
-
-  
-
-  <div className="modal hide" id='modalWinner'>
-    <div className="modal__img">
-      <Warrior1 />
-    </div>
-
-    <div className="modal__detail">
-      <ul>
-        <li> 
-          <h2>
-            the winner is:
-          </h2>
-          <div id="show__winner">
-            Ganador
-          </div>
-        </li>
-        <li>
-          <button type="button" id='playAgainBtn' onClick={handleModal}>Play again</button>
-        </li>
-      </ul>
-    </div>
-    </div>
-  </>
+  </div>
   )
 };
 
